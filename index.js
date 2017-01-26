@@ -68,7 +68,11 @@ FileSystemAdapter.prototype.getFileLocation = function(config, filename) {
   Helpers
  --------------- */
  FileSystemAdapter.prototype._getApplicationDir = function() {
+
   if (this._filesDir) {
+    if (this._filesDir.startsWith('/')) {
+      return this._filesDir;
+    }
     return path.join('files', this._filesDir);
   } else {
     return 'files';
